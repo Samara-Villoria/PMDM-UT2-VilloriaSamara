@@ -66,7 +66,7 @@ fun ActividadItem(
         Button(
             onClick = { }
         ) {
-            Text("Ver detalles")
+            Text("Ver detalle")
         }
     }
 }
