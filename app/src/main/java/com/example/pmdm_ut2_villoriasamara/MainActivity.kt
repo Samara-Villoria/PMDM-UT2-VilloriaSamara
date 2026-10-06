@@ -43,6 +43,40 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun PantallaInscripcion() {
+
+    var nombre by remember {
+        mutableStateOf("")
+    }
+
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+
+        Text("Inscripción")
+
+        TextField(
+            value = nombre,
+            onValueChange = { nuevoNombre ->
+                nombre = nuevoNombre
+            },
+            label = {
+                Text("Nombre")
+            }
+        )
+
+        Button(
+            onClick = {
+                println("Nombre: $nombre")
+            }
+        ) {
+            Text("Continuar")
+        }
+    }
+}
+
+@Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
@@ -141,7 +175,11 @@ fun PantallaActividades() {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
 
+        PantallaInscripcion()
+
         Contador()
+
+        EjemploNombre()
 
         ActividadItem(
             nombre = "Taller de Android",
@@ -153,6 +191,5 @@ fun PantallaActividades() {
             categoria = "Deporte"
         )
 
-        EjemploNombre()
     }
 }
