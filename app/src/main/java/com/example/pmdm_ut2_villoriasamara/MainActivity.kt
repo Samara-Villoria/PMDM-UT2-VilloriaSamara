@@ -43,37 +43,27 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PantallaInscripcion() {
+fun CampoNombre(
+    nombre: String,
+    onNombreChange: (String) -> Unit
+) {
+    TextField(
+        value = nombre,
+        onValueChange = onNombreChange,
+        label = { Text("Nombre") }
+    )
+}
 
-    var nombre by remember {
-        mutableStateOf("")
-    }
-
-    Column(
-        modifier = Modifier.padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-
-        Text("Inscripción")
-
-        TextField(
-            value = nombre,
-            onValueChange = { nuevoNombre ->
-                nombre = nuevoNombre
-            },
-            label = {
-                Text("Nombre")
-            }
-        )
-
-        Button(
-            onClick = {
-                println("Nombre: $nombre")
-            }
-        ) {
-            Text("Continuar")
-        }
-    }
+@Composable
+fun CampoEmail(
+    email: String,
+    onEmailChange: (String) -> Unit
+) {
+    TextField(
+        value = email,
+        onValueChange = onEmailChange,
+        label = { Text("Email") }
+    )
 }
 
 @Composable
