@@ -3,11 +3,16 @@ package com.example.pmdm_ut2_villoriasamara
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,8 +33,14 @@ fun PantallaInscripcion() {
 
     var turno by remember { mutableStateOf("Mañana") }
 
+    var resumen by remember { mutableStateOf("") }
+
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .imePadding()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
 
@@ -92,14 +103,45 @@ fun PantallaInscripcion() {
 
         Button(
             onClick = {
-                println("Nombre: $nombre" +
-                        "\nEmail: $email" +
-                        "\nRecordatorio: $recordatorio" +
-                        "\nTurno: $turno")
+                val aviso = if (recordatorio) "Sí" else "No"
 
-            }
+                resumen = "Nombre: $nombre\n" +
+                        "Correo: $email\n" +
+                        "Turno: $turno\n" +
+                        "Recordatorio: $aviso"
+            },
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Continuar")
+            Text("Confirmar")
+        }
+
+        if (resumen.isNotEmpty()) {
+            Text("Resumen de la inscripción")
+            Text(resumen)
         }
     }
+}
+
+@Composable
+fun CampoNombre(
+    nombre: String,
+    onNombreChange: (String) -> Unit
+) {
+    TextField(
+        value = nombre,
+        onValueChange = onNombreChange,
+        label = { Text("Nombre") }
+    )
+}
+
+@Composable
+fun CampoEmail(
+    email: String,
+    onEmailChange: (String) -> Unit
+) {
+    TextField(
+        value = email,
+        onValueChange = onEmailChange,
+        label = { Text("Email") }
+    )
 }
