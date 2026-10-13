@@ -1,4 +1,6 @@
-package com.example.pmdm_ut2_villoriasamara
+package com.example.pmdm_ut2_villoriasamara.model
+
+import com.example.pmdm_ut2_villoriasamara.R
 
 data class Actividad(
     val id: Int,

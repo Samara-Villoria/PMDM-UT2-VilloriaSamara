@@ -1,4 +1,4 @@
-package com.example.pmdm_ut2_villoriasamara
+package com.example.pmdm_ut2_villoriasamara.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
