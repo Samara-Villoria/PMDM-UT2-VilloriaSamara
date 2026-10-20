@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pmdm_ut2_villoriasamara.ui.theme.PMDMUT2VilloriaSamaraTheme
-import com.example.pmdm_ut2_villoriasamara.view.PantallaActividades
+import com.example.pmdm_ut2_villoriasamara.view.ActividadesApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,8 +31,9 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
-                    //PantallaInscripcion()
-                    PantallaActividades()
+                    ActividadesApp(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }

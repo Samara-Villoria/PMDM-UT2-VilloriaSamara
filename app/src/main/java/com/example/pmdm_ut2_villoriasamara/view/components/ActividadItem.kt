@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pmdm_ut2_villoriasamara.model.Actividad
 
 @Composable
-fun ActividadItem(actividad: Actividad) {
+fun ActividadItem(actividad: Actividad, onVerDetalle: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -39,12 +39,9 @@ fun ActividadItem(actividad: Actividad) {
         }
 
         Button(
-            onClick = {
-                println("Actividad seleccionada: ${actividad.nombre}")
-            },
-            modifier = Modifier.fillMaxWidth()
+            onClick = onVerDetalle
         ) {
-            Text("Ver actividad")
+            Text("Ver detalle")
         }
     }
 }

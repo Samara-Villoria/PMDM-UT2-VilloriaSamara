@@ -12,14 +12,22 @@ import com.example.pmdm_ut2_villoriasamara.model.actividadesEjemplo
 import com.example.pmdm_ut2_villoriasamara.view.components.ActividadItem
 
 @Composable
-fun PantallaActividades() {
+fun PantallaActividades(
+    onVerDetalle: (Int) -> Unit
+) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(actividadesEjemplo) { actividad ->
-            ActividadItem(actividad = actividad)
+
+            ActividadItem(
+                actividad = actividad,
+                onVerDetalle = {
+                    onVerDetalle(actividad.id)
+                }
+            )
         }
     }
 }
